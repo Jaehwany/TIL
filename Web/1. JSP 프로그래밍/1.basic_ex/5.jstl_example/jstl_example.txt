@@ -1,0 +1,21 @@
+jstl_example   --Dynamic Web Project
+                       context root : /
+                       content directory  : WebContent
+    src
+       com.ssafy.exam
+             TestServlet1.java    ( TEST1 / test1 / doGet() )
+             TestServlet2.java    ( TEST2 / test2 / doGet() )
+             TestServlet3.java    ( TEST3 / test3 / doGet() )
+             TestServlet4.java    ( TEST4 / test4 / doGet() )
+             User.java
+    
+    WebContent
+        WEB-INF
+           lib
+             jstl-1.2.jar
+        view
+            test1.jsp
+            test2.jsp
+            test3.jsp
+            test4.jsp
+        index.html

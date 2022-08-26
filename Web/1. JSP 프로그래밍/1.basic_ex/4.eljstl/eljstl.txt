@@ -1,0 +1,34 @@
+eljstl  ---Dynamic Web Project
+                       dynamic web module version : 4.0     
+                       context root : jstl
+                       content directory : WebContent
+                       
+    src
+                           
+    WebContent
+       WEB-INF
+          lib
+            jstl-1.2.jar   -- jstl를 사용할때 필요한 라이브러리
+       eltest  --폴더
+         elEx1.jsp
+         elEx2.jsp
+       jstltest
+         jstlEx1.jsp  
+         jstlEx2.jsp
+         jstlEx3.jsp
+         jstlEx4.jsp
+         jstlEx5.jsp
+         jstlEx6.jsp
+         jstlInput.html
+         jstlResult.jsp
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         

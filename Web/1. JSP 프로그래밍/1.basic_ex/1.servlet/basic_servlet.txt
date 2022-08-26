@@ -1,0 +1,22 @@
+basic_servlet		  --Dynamic Web Project
+		                  Dynamic Web Module Version: 4.0
+		                  Context root: servlet
+		                  Content directory: WebContent
+		                  Generate web.xml deployment descriptor(체크안함)
+   1.Hello
+    src
+    	 com.study.edu
+            HelloServlet.java  --servlet / doGet()
+            NextServlet.java   --servlet / doGet()	
+          
+  
+   2. GET/POST method        
+    src
+    	com.studyy.method
+            GetServlet.java    --servlet /name:GET,  urlpattern:/get.do  / doGet()   
+            PostServlet.java   --servlet /name:POST,  urlpattern:/post.do  / doPost()   
+            	    
+    WebContent  
+       exam  --폴더           
+          getTest.html
+          postTest.html

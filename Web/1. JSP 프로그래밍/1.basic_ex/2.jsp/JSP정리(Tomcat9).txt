@@ -1,0 +1,533 @@
+﻿※JSP & Servlet 웹프로그램
+1. 반드시 Web Server가 있어야 함
+  (1)무료
+       apache
+       tomcat  - 서버 역활, 엔진
+       resin   - 서버 역활, 엔진
+  (2)상용화
+       webshpere
+       webLogic
+       jeus
+       iis(2000서버설치)
+
+2. 자바에서 웹으로 나가는 3가지
+(1) jsp : 파일명.jsp  (html 태그안에서 자바코드 포함)
+(2) applet : 파일명.java
+(3) servlet : 파일명.java (자바코드에서 html태그포함)
+
+3. 엔진 종류
+   sun사   : Jserv
+   Jakarta : Tomcat  (jakarta.apache.org)
+   chucho  : resin   (www.caucho.com)
+
+4. jsp& servlet 소스는 반드시 지정된 장소에 저장
+5. jsp :html 태그안에서 java코드 기술(*.jsp)
+   servlet:java소스안에서 html 태그 기술(*.java)
+=================================================================
+※ Eclipse의 Dynamic Web Project의 구조
+
+ex) 
+  NoticeProject
+     |
+     |---- src            ---- *.java (class파일, servlet파일)
+     | 
+     |---- build        
+     |       |--classes ---- *.class(컴파일된파일)
+     |                                     (class파일, servlet파일)
+     |---- WebContent
+                  |
+                  |--MATA-INF       --- 환경설정
+                  | 
+                  |--WEB-INF        --- 환경설정
+                  |          |
+                  |          |---lib       -- *.jar(라이브러리파일) - cos.jar, mail.jar등
+                  |          |---web.xml   --  명세서작성
+                  |
+                  |-- *.jsp,  *.js,   *.html,  *.css, 이미지폴더...
+
+=================================================================
+※Servlet : API도움말 (http://tomcat.apache.org/tomcat-9.0-doc/index.html)
+
+1. 클라이언트에서 전달한 값을 서버에서 읽기
+    (1) getParameter() : 값전달
+         ex)   <input type="text"  name="irum">                                  
+
+                String name=request.getParameter("irum");
+
+    (2) getParameterValues() : 여러개의 값전달(배열인경우)
+    (3) getParameterNames() : 파라미터의 이름이 정해져 있지 않을때
+    예) Eumeration e = request.getParameterNames();
+          while(e.hasMoreElements())
+         {
+               String name = (String)e.nextElement();
+               String []value = request.getParameterValues(name);
+
+	           for(int i=0; i<value.length; i++)
+               {
+               }
+         } 
+
+【 Post방식과 Get방식의 차이 】
+① get  
+   - 주로 웹브라우저가 웹서버에 데이타를 요청할때 사용
+   - 전송데이터 길이의 제한이 있다
+     (ex : 문자열전송)
+   - 데이타가 인코딩되어 URL에 붙는다
+     [형식] 파일명.확장명?변수=값&변수=값
+
+② post
+   - 웹브라우저에서 웹서버에 데이타를 전달
+   - 전송데이터 길이의 제한이 없다
+     (ex : 대량의 데이터, 파일전송)
+   - 전달되는 데이터가 보이지 않는다
+
+
+2. Servlet의 라이프사이클
+   init()  ->  service()  -> destory()
+                 doGet()
+                 doPost()
+
+   init() : 서버실행후 웹브라우저띄울때,최초1번 호출
+   destroy() : 서버종료시호출
+=================================================================
+※JSP(Java Server Page)
+   : 서블릿은 성능좋은 웹응용프로그램을 효과적으로 개발할수는 있지만,
+          프로그램 작성이 불편하다는 단점이 있다.
+     JSP는 서블릿기술을 바탕으로 ASP처럼 쉽고, 빠르게 원하는 웹응용프로그램을 작성할수 있다
+
+   【Servlet과 JSP과 비교】
+    ① JSP는 Servlet보다 쉽고 빠르게 프로그램 작성
+    ② JSP화면구성을 위한 HTML부분과 프로그램로직(Logic)을 분리할수있다
+       (프로그래머와 웹디자이너가 협력작업할수 있다)
+    ③ 뛰어난 웹컨테이너는 효율적인 코드를 생성하기 때문에 서블릿보다 성능면에서 뛰어나다
+    ④ 서블릿은 자바 프로그램이기 때문에 HTML의 페이지 디자인을 하기 위한 디자인도구가
+       부족한데, JSP는 HTML페이지 디자인도구들을 이용해서 작성할수 있다.
+
+※JSP기본문법
+1. 스크립트요소 4가지
+(1) 선언문
+     <%!
+                    변수 및 메소드를 선언하는 영역
+      %>
+(2)스크립트릿
+     <%
+                   코드작성(변수선언, for, while,if등)
+      %>
+(3)표현식
+     <%=변수 또는 메소드%>
+(4)주석
+    i) HTML에서 주석
+       <!-- Fighting <%=name%>-->
+   ii) JSP에서 주석
+       <%-- Fighting<%=name%> --%>
+   iii)스크립트 언어주석
+      <% ........../* 주석*/(여러줄 주석)............%>
+      <% ...........//주석(한줄주석)...........%>
+
+3. JSP의 지시자와 액션태그
+(1)지시자(Directive)
+① page 지시자
+   - info : 페이지를 설명해 주는 문자열, 속성값의 내용이나 길이의 제한이 없음
+                (JSP페이지의 제목을 붙이는것같은 기능)
+                <%@ page info="JSPStudy.co.kr" %>
+   - language : 기본값 java(생략가능)
+                <%@ page language="java" %>
+   - contentType : 어떤 내용으로 출력할것인지 MIME형태 , ISO-8859-1(표준)
+                <%page contentType="text/html"; charset="EUC-KR">
+   - extends : 상속받은 클래스
+                <% page extends="com.jspstudy.Directive" %>
+   - import : package이름을 지정하지 않고 다른 클래스를 가져와서 사용
+              (쉼표로 구분해서 사용가능, 유일하게 중복사용가능)
+                 <%@ page import="java.util.*, java.sql.*"
+                          import="java.io.*"  %>                          
+   - session : HttpSession을 사용할지여부
+                 <% page session="false" %>
+   - buffer : nono으로 지정하면 출력버퍼 사용안함
+                 <%@ page buffer="16kb" %>
+   - autoFlush : true로 설정할경우 자동으로 버퍼삭제(다 채워졌을때)
+                  <%@ page autoFlush="false" %>
+   - isThreadSafe : 동시에 여러브라우저의 요청을 처리할지 여부
+                   <%@ page  isThreadSafe="false" %>
+   - errorPage : 예외가 발생할 경우 넘겨주는 페이지
+                   <%@ page errorPage="Error.jsp" %>
+                    //Error페이지가 나타나지 않을 경우
+	    Explorer에서
+                  도구 -> 인터넷옵션 -> 고급 -> HTTP오류페이지표시(체크해제)
+   - isErrorPage :에러처리 담당 페이지인지 아닌지 여부
+                   <%@ page isErrorPage="true" %>
+   - pageEncoding : 인코딩 지정(기본값 : ISO-8859_1)
+                   <%@ page pageEncoding="EUC-KR" %>
+② include 지시자: JSP파일 삽입
+③ taglib : EL, jstl에서 이용
+
+(2)액션태그
+① include : include지시자 처럼 다른페이지 포함/ 추가시킬 페이지의 처리결과도 포함
+            (HTML, JSP, Servlet모두가능)
+            <jsp:include page="로컬URL" flush="true" />
+
+	        <jsp:include page="로컬URL" flush="true">
+	            <jsp:param name="" value="" />
+            </jsp:include>
+
+② forward : 다른페이지로 이동할때 사용
+             (현재 page의 모든 내용을 가지고 다른 page로 이동)
+             <jsp:forward page="로컬URL" />
+             <jsp:forward page="로컬URL"></jsp:forword>
+
+             <jsp:forward page='<%=expression%>' />
+------------------------------------------------------------------------------
+【자바빈즈】
+  1.Bean이란
+    자바에서 사용하는 컴포넌트(부품)이다. 
+    Bean은 자바에서 컴포넌트를 이용하기위해 만들어 놓은 기술이다.
+    컴포넌트를 사용하면 좋은 이유는 필요할때마다 가져다가 사용할수 있다는 점인데, 
+    jsp에서 자바의 컴포넌트를 이용해서 프로그래밍하는것을 빈즈프로래밍이라한다.
+
+  2.Bean작성방법
+   ①필요한변수 선언(private로 함)
+   ②변수의 이름과 일치하는 setXxx()메소드를 public로 만듬(Xxx는 변수이름)
+   ③변수의 이름과 일치하는 getXxx()메소드를 public로 만듬(Xxx는 변수이름)
+	(bean은 반드시 package안에 만들어야함)
+
+   예)private String name
+      public void setName(String name)
+      {
+	this.name=name;
+      }
+      public void getName()
+      {
+	return name;
+      }
+
+  3.컴파일
+     Bean은 자바파일(*.java)이므로 javac명령어로 컴파일 한다
+     <형식> javac [옵션][자바소스파일]
+
+  4. Bean태그
+    ① <jsp:useBean id=".."  class=".." scope=".."/>
+       id:생성될 빈의 이름을 지정
+       class:빈을 생성하기 위해 빈 클래스를 지정해준다
+       scope:빈을 사용할수 있는 범위
+           - page:해당 jsp페이지 내에서만 존재   -- 생략
+           - request:사용자의 요청(request)을 처리하는 동안 존재
+           - session:사용자가 최초에 접속하여 종료 될때까지 존재
+           - application:해당 어플리케이션이 살아있는 동안 함께 존재
+           (라이프사이클 길이:application > session > request > page>
+
+    ② <jsp:setProperty name=".."  property=".."  value=".." param=".."/>
+       name:사용할 빈의 이름지정  
+       property:값을 저장할 빈의 변수를 지정 (proerty="*"  : 모든변수)
+       value:변수의 값을 지정
+       param:폼으로 넘어온 파라미터의 이름을 지정
+
+    ③ <jsp:getProperty name=".."  property=".."/>
+       name:사용할 빈의 이름지정  
+       property:값을 가져올 빈의 변수를 지정 
+   5. scope
+     : 객체가 사용될 수 있는 범위(Life cycle)
+     (page   <  request   <  session  <  application )
+=================================================================
+  5. JSP내부객체
+    : JSP페이지에서 JSP컨테이너가 제공하는 특별한객체(변수)
+     - request : javax.servlet.http.HttpServletReqeuest 
+                   (파라미터를 포함한 요청을 담고 있는 객체)
+     - response : javax.servlet.http.HttpServletResponse
+                    (요청에 대한 응답)
+     - out : javax.servlet.jsp.JspWriter
+          (페이지의 내용을 담고 있는 출력스트림객체)
+     - session :  javax.servlet.http.HttpSession
+              (세션정보를 담고있는 객체)
+     - application :javax.servlet.ServletContent
+               (모든페이지가 공유할 데이터를 담고있는 객체)
+     - pageContent :javax.servlet.jsp.PageContext
+                         (페이지실행에 필요한 context정보를 담고있는객체)
+     - page  :javax.servlet.jsp.HttpJspPage
+              (JSP페이지의 서블릿객체)
+     - config  :javax.servlet.ServletConfig
+              (JSP페이지의 서블릿설정 데이타 초기화 정보 객체)
+     - exception  :java.lang.Throwable
+                (JSP페이지의 서블릿 실행시 처리하지 못한 예외객체)
+
+=================================================================
+※ 쿠키와 세션
+
+HTTP는 상태 유지를 못하는 프로토콜 
+    : 웹 브라우저(클라이언트)와 웹서버(서버)는 한번 데이터 전송이 완료되면 연결이 끊김
+
+1. 쿠키(Cookie) : 클라이언트의 웹 브라우저에 웹 서버가 전달한 정보를 저장
+ex) 자동로그인, 방문 횟수 기록, 오늘하루 창 안띄우기
+
+형식> Set-Cookie: name=value;expiers=date;path=path;domain=domain;secure
+         name=value : 쿠키 이름과 값
+         expires=date : 쿠키 유효 기간 
+         domain=domain : 해당 도메인의 컴퓨터에 접근하는 경우에 서버에 전달
+         path=path : 유효한 URL 경로
+         secure :호스트와 보안성이 있는 채널을 사용
+
+         (1)쿠키생성
+           - Cookie cookie = new Cookie(String key, String value);
+           - cookie.setValue(newValue);
+           - response.addCookie(name);
+        (2)사용자의 요청에서 모든 쿠키를 얻기
+           - Cookie[] cookies = request.getCookies();
+        (3)원하는 쿠키 검색(이름)
+          - String name = cookies[i].getName();
+          - if( name.equals(“id”) ) { … } 
+        (4)쿠키로부터 값을 얻음
+          - String value = cookies[i].getValue();
+        (5)쿠키 삭제 
+          - 쿠키 생성 후 setMaxAge(0)을 사용
+          -  response.addCookie(name);
+
+2. 세션(Session) :  Server쪽에서 정보를 기억
+   ex) Email, 장바구니, 로그인
+
+(1) 웹 컨테이너 내부에 정보를 저장, 관리하고 저장된 정보에 접근하기 위해 세션 ID를 사용 
+    : 쿠키 사용(JSESSIONID)
+
+(2) 서블릿 
+    HttpSession의 클래스의 getSession 메소드를 이용
+    ex) HttpSession session =  request.getSession();
+
+(3) JSP    
+    session 내장 객체이용
+            setAttribute()                    :세션설정
+            getAttribute()                    :세션리턴
+            getAttributeNames()          
+            getCreationTime() 
+            getId()                           :세션ID리턴
+            getLastAccessedTime()
+            getMaxInactiveInterval()          : 세션에 설정된시간 리턴
+            setMaxInactiveInterval()          : 세션에 시간설정
+            invalidate()                      : 모든세션끊기
+            isNew()  
+            removeAttribute()                 : 해당 세션끊기
+
+===============================================================
+※JNDI(Java Naming Directory Interface) : 원격지 접속
+: 이름을 이용해서 원하는 정보 혹은 자원을 찾을 수 있는 서비스
+  (dbcp를 사용하기위한 JNDI)
+   dbcp : database connection pool
+
+(1) javax.naming 패키지
+(2) InitialContext 클래스	
+     - void bind(String name, Object obj);
+     - void rebind(String name, Object obj);
+     - Object lookup(String name);
+     - NamingEnumeration list(String name)
+
+사용예)
+       try {
+	Context initCnt = new InitialContext();
+	Context env = (Context)initCnt.lookup("java:comp/env");
+	ds = (DataSource)env.lookup("jdbc/DB명");
+             } catch(Exception ex) {
+	ex.printStackTrace();
+            }
+		…
+		…
+       <%
+	java.sql.Connection conn = ds.getConnection();
+        %>
+===============================================================
+※JDBC (Java DataBase Connectivity) : DB와 연동
+
+(1) 오라클드라이버설치
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext밑에 ojdbc6.jar를 복사
+  
+(2)【 Database별 Driver 와 connection URL 】
+
+DATABASE  |   VALUE 
+----------------------------------------------------------------------------------
+ORACLE    |  DRIVER  |   oracle.jdbc.driver.OracleDriver 
+               |  URL       |   jdbc:oracle:thin:@hostname:port:SID 
+MSSQL     |  DRIVER  |   com.microsoft.jdbc.sqlserver.SQLServerDriver 
+               |  URL       |   jdbc:Microsoft:sqlserver://localhost:1433;databasename=DB명 
+MYSQL     |  DRIVER  |   org.gjt.mm.mysql.Driver 
+               |              |   (또는)com.mysql.jdbc.Driver
+               |  URL      |   jdbc:mysql://localhost:3306/DB명 
+
+
+(3) 프로그램에서 DB연결
+
+1단계 : JDBC드라이버 로드
+Class.forName("드라이버종류");
+
+★ 드라이버 종류
+1. Access드라이버(ODBC) : Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+2. MySQL 드라이버:           Class.forName(“com.mysql.jdbc.Driver”);
+3. 오라클 드라이버 :           Class.forName(“oracle.jdbc.driver.OracleDriver”);
+4. MS-SQL 드라이버 :        Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
+
+--------------------------------------------------------------------------
+2단계 :  데이터베이스 연결객체 생성
+Connection con = DriverManager.getConnection(url, uid, pwd);
+url : JDBC형식의 url
+uid : 사용자명
+pwd : 패스워드
+
+예)Connection con = DriverManager.getConnection("jdbc:odbc:jdbc", "master","java");
+
+1. Access인경우 : jdbc:odbc:ODBC명
+2. 오라클인경우 : jdbc:oracle://localhost:1521:SID
+3. MySQL인경우  : jdbc:mysql://localhost:3306/DB명
+4. MS-SQL인경우 : jdbc:Microsoft:sqlserver://localhost:1433;databasename=DB명 
+
+---------------------------------------------------------------------------
+3단계 : SQL문실행
+(방법1)
+Statement stmt=null;
+stmt = conn.createStatement();
+String sql="insert into PostDBTest values +"('"+sname+"','"+stel+"','"+saddr+"')";
+stmt.executeUpdate(sql);
+
+(방법2)
+PreparedStatement pstmt=null;
+String sql="insert into PostDBTest values(?,?,?)";
+pstmt=conn.prepareStatement(sql);
+pstmt.setString(1, sname);
+pstmt.setString(2, stel);
+pstmt.setString(3, saddr);
+pstmt.executeUpdate();
+
+(참고)-------------------------------------------------------------------------------
+i)  executeUpdate() : insert, update, delete, create문
+ii) executeQuery() : select문
+
+int executeUpdate() 
+int : 처리된 결과 개수 (입력 or 수정된 개수 …)
+ResultSet exeucteQuery()
+ResultSet : select문의 결과 집합 (테이블)
+Cursor의 위치를 이동(next())해 가며 결과를 가져옴(getXxxx())
+
+예)
+String query = “select name,age from user”;
+ResultSet rs = stmt.executeQuery(qeury);
+while( rs.next() ) 
+{
+	String s = rs.getString(“name”);
+	float n = rs.getInt(“age”);
+	System.out.println(s + “ “ + n);
+} 
+-------------------------------------------------------------
+4단계 : 결과처리
+String str = "select name,age from member";
+ResultSet rs = stmt.executeQuery(str);
+--------------------------------------------------------------
+5단계 : 데이타베이스와 연결해제
+rs.close();    //ResultSet해제
+stmt.close();  //Statement해제
+con.close();   //Connection해제
+
+★레코드이동
+next() : 다음레코드
+previouse() : 이전레코드
+first() : 첫레코드
+last() : 마지막레코드
+※모델2와 MVC패턴
+1. 모델1(Model1) vs 모델2(Model2)
+(1)모델1
+    장점 : ① 단순한 페이지흐름으로 인해 개발기간이 단축된다
+            ② MVC구조에 대한 추가적인 교육이 필요없고,개발팀의 팀원의 수준이 높지 않아도 된다
+            ③ 중소형 프로젝트에 적합하다
+    단점 : ① 웹 어플리케이션이 복잡해질수록 유지보수가 힘들다
+            ② 디자이너와 개발자 간의 원활한 의사소통이 필요하다
+
+(2)모델2
+    장점 : ① 비즈니스로직(Business Logic)과 뷰(View)의 분리로 인해 어플리케이션이 
+                명료해지며 유지보수와 확장이 용이하다
+           ② 개발자와 디자이너의 작업이 분리되어져 역할과 책임구분이 명확하다
+    단점 : ① 개발초기에 구조 설계를 위한 시간이 많이 소요되므로 개발기간이 증가한다
+            ② MVC구조에 대한 개발자들의 이해가 필요해서 개발팀의 팀원의 높은수준이 요구된다
+
+2. MVC(Model-View-Controller)패턴
+    ① 뷰(View) - JSP 페이지 또는 서블릿(Servlet)
+    ② 모델(Model) - 자바빈, 자바객체 또는 EJB(Enterprise Java Bean)의 entity Bean
+    ③ 컨트롤러(Controller) - 서블릿(Servlet),JSP페이지 또는 EJB(Enterprise Java Bean)의 sessionBean
+
+===============================================================
+※표현언어(EL : Expression Language)
+ : EL은 JSTL에 소개된 내용으로 JSP2.0에 추가된 기능이며 JSP의 기본문법을 보완하는 역할을 한다
+  (1) EL에서 제공하는 기능
+            -	JSP의 네 가지 기본 객체가 제공하는 영역의 속성 사용
+            -	집합 객체에 대한 접근 방법 제공
+            -	수치 연산, 관계 연산, 논리 연산자 제공
+            -	자바 클래스 메소드 호출 기능 제공
+            -	표현 언어만의 기본 객체 제공
+             표기법 : ${ expr }
+
+  (2) EL이 제공하는 기본 객체
+            -	pageContext
+            -	pageScope
+            -	requestScope
+            -	sessionScope
+            -	applicationScope
+            -	param
+            -	paramValues
+            -	header
+            -	headerValues
+            -	cookie
+            -	initParam
+
+  (3)표현언어에서 자바메소드를 사용 
+     - 자바클래스작성
+     - 태그라이브러리에 대한 설정정보를 담고 있는 tld파일을 작성
+     - web.xml에 tld파일을 사용할수 있는 설정정보를  추가
+     - 자바클래스에 접근하는 jsp파일을 작성
+ 
+===============================================================
+※ JSTL (JSP Standard Tag Library)  : http://tomcat.apache.org/taglibs/ 에서 다운로드
+    - jakarta-taglibs-standard-1.1.2.zip를 다운로드 한후 압축을 풀고
+      (jstl.jar,  standard.jar)  또는 (jstl-1.2.jar) 이 필요함
+
+     제공되는 태그의 종류
+     (JSP2.0 규약은 JSTL 1.1.2을 사용한다)
+
+   라이브러리                URI                            Prefix(접두어)      예시
+   -----------------------------------------------------------------------------------------------
+   Core(코어)       http://java.sun.com/jsp/jstl/core            c             <c:tagname..>
+   XML               http://java.sun.com/jsp/jstl/xml             x             <x:tagname..>
+   국제화            http://java.sun.com/jsp/jstl/fmt            fmt            <fmt:tgname..>
+   DB                 http://java.sun.com/jsp/jstl/sql              sql           <sql:tagname..>
+   함수(Function)  http://java.sun.com/jsp/jstl/functions      fn             fn:functionName(..)
+  ------------------------------------------------------------------------------------------------
+
+ <형식>
+(1)JSTL core
+   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   
+   변수설정 : <c:set var="" value="" scope=""/>
+   제거 :     <c:remove var="" scope="{page|request|session|application}"/>
+   출력 :     <c:out var="" />
+   반복 :     <c:forEach   items="" delims="" begin="" end=""  step="" var="" varStatus=""/>
+               <c:forTonkens items="" delims="" begin="" end=""  step="" var="" varStatus=""/>
+   조건 :     <c:if test="조건" var="변수" scope=""/>
+   선택 :     <c:choose>
+                  <c:when test="조건">내용</c:when>         //만족할때
+                  <c:when test="조건">내용</c:when>         //만족할때
+                                     :
+                  <c:otherwise>내용</c:otherwise>             //만족하지 않을때
+              </c:choose>
+   자원접근 : <c:import url="" var="" scope="" varReader="" charEncoding=""/>
+   이동:      <c:redirect url=""/>
+   url생성:   <c:url var="" value="" scope=""/>  
+
+  [ex]
+    <jsp:useBean  id="member" class="entity.Member"  scope="request"/>
+     아래와 동일하다
+    <%
+          Member member=(Member)request.getAttribute("member");
+          request.setAttribute("member",member);          
+     %>
+   
+(3)JSTL fmt
+   <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+   한글처리 : <fmt:requestEncoding value=""/>
+
+(4)JSTL sql
+   <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+  
+   접속 : <sql:setDataSource url="" driver="" user="" password="" var="" scope=""/>
+   DML  : <sql:query sql="" dataSource="" var="" />  ==> select
+          <sql:update sql="" dataSource="" var=""/>  ==> inset,delete,update,create등

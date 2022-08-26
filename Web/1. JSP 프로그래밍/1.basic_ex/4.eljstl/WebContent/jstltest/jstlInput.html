@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="jstlResult.jsp" method="post">
+<table border="1">
+	<tr>
+		<td>이름</td>
+		<td><input type="text" name="name"></td>
+	</tr>
+	<tr>
+		<td>나이</td>
+		<td><input type="text" name="age"></td>
+	</tr>
+	<tr>
+		<td>색깔</td>
+		<td>
+		<select name="color" style="width:100px">
+		<option value="red">빨 강</option>
+		<option value="green">초 록</option>
+		<option value="blue">파 랑</option>
+		<option value="magenta">보 라</option>
+		<option value="etc">기 타</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>취미</td>
+		<td>
+		<input type="checkbox" name="hobby" value="잠자기">잠자기
+		<input type="checkbox" name="hobby" value="영화">영화
+		<input type="checkbox" name="hobby" value="게임">게임
+		<input type="checkbox" name="hobby" value="운동">운동
+		<input type="checkbox" name="hobby" value="음악">음악		
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" align="center">
+		<input type="submit" value="SEND">
+		<input type="Reset" value="CANCEL">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+</html>
+<!-- 
+이름 : 홍길동
+나이 : 17세(청소년)     ==>   20세(성인)    (if이용)
+좋아하는색상 : 빨간색          ==>  초록색, 파란색,보라색,기타색   (choose이용)
+취미 : 잠자기  영화  운동      ==>  (forEach이용)
+뒤로
+-->

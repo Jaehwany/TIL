@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<!-- 
+	error: 404(페이지를 못찾음)    405(메서드를 못찾음)
+	get -> doGet()
+	post -> doPost()
+ -->
+<body>        <!-- 절대경로 -->
+<form action="/servlet/get.do" method="get">
+	이름: <input type="text" name="irum"><br>
+	암호: <input type="text" name="amho"><br>
+	<input type="submit" value="전송">
+	<input type="reset" value="취소">
+</form>
+</body>
+</html>
+<!-- 
+GET방식 (queryString): 보안에 취약
+http://localhost:8080/edu/get.do?irum=kim&amho=1234
+ -->

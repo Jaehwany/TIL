@@ -1,0 +1,59 @@
+basic_jsp   --Dynamic Web Project
+                Dynamic Web Module Version: 4.0
+                Context root: jsp
+                Content directory: WebContent
+                Generate web.xml deployment descriptor(체크안함)
+
+src
+	com.study.product --패키지
+      BasketServlet.java   --servlet(doGet, name:BASKET, urlpattern:basket)
+	  SaveServlet.java     --servlet(doPost, name:SAVE, urlpattern:save)   
+	  
+WebContent
+            
+	  01.basic   -- 기본 문법  
+	     exam01.jsp
+	     exam02.jsp
+	     forExample.jsp
+	     ifExample.html / ifExample.jsp  
+	     whileExample.html / whileExample.jsp
+	     test.html / testProc.jsp   -- getParameterValues(),getParameterNames()  
+	 
+	  02.directive -- 지시자
+         directiveEx1.jsp
+         directiveEx2.jsp / error.jsp
+         directiveEx3.jsp / top.jsp / bottom.jsp  / ugc.jpg       
+	 
+	  03.action -- action
+         jspinclude.jsp  / greeting.jsp  
+         blood
+            A.jsp
+            AB.jsp
+            B.jsp
+            O.jsp
+            bloodtype.jsp
+            blood.html   
+         test
+            first.jsp
+            second.jsp
+            third.jsp   
+      
+      04.cookie     --쿠키
+        cookCookie.jsp
+        testCookie1.jsp
+        testCookie2.jsp
+      
+      05.session -- 세션
+     	setSession.jsp
+     	viewSession1.jsp
+     	viewSession2.jsp
+     	
+	  06.product_ex -- 상품 장바구니 구현
+        product.html  
+        
+     
+     
+	     
+========================================================	     
+eclipse.ini파일 맨 마지막에서	     
+-Dfile.encoding=utf-8             

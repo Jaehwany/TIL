@@ -1,0 +1,103 @@
+﻿login  -- Dynamic  Web Project
+                        dynamic web module version : 4.0
+                        context root : log
+                        content directory : WebContent               
+src
+   common   
+       DBConnection.java     --복사
+   com.ssafy.controller
+       LoginServlet.java     --servlet   servlet-name:LoginServlet / url-pattern:login
+   com.ssafy.service 
+       LoginService.java     --interface
+       LoginServiceImpl.java
+   com.ssafy.dao 
+       LoginDao.java         --interface
+       LoginDaoImpl.java
+   com.ssafy.dto
+       LoginDTO.java   --class              
+
+WebContent
+    table_schema   --폴더
+         table.sql     --로그인  and 사원테이블작성(복사)
+    index.jsp
+    menu.jsp
+
+    logtest   --폴더
+       login.jsp  --복사
+       loginOK.jsp
+       loginFail.jsp   
+=================================================
+<수정하기>
+src
+   common 
+   	 DBConnection.java    --복사
+   	 DBClose.java         --복사
+   com.ssafy.controller
+     LoginServlet.java     --servlet   servlet-name:LoginServlet / url-pattern:login 
+     EmpServlet.java       --servelt   servlet-name:EmpServlet   /url-pattern:emp                 
+                                                                                            
+   com.ssafy.service
+     LoginService.java     --interface
+     LoginServiceImpl.java
+     EmpService.java       --interface
+     EmpServiceImpl.java
+   
+   com.ssafy.dao
+     LoginDao.java     --class
+     EmpDao.java
+        
+   com.ssafy.dto
+     LoginDTO.java  --class
+     EmpDTO.java                           
+
+WebContent
+    META-INF
+      context.xml
+              
+    index.jsp
+    menu.jsp
+    table_schema
+         table.sql   <---로그인 또는 사원테이블작성
+    
+    logtest  --폴더
+       login.jsp        --복사
+       loginOk.jsp
+       loginFail.jsp
+	emptest
+	   empInsert.jsp    --복사
+	   empList.jsp      --복사
+	   empUpdate.jsp    --복사    
+========================================
+1. 데이터베이스 설계
+2. 화면설계(MVC패턴)
+3. 테이블생성 --> Entity만들기
+4. 로그인
+5. 사원추가하기
+6. 사원전체보기
+7. 삭제하기 or  수정하기	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	   

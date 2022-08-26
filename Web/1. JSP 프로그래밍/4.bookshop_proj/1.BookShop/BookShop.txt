@@ -1,0 +1,103 @@
+﻿BookShop  -- Dynamic  Web Project
+                        dynamic web module version : 4.0
+                        context root : bkshop
+                        content directory : WebContent               
+src
+   common   
+       DBClose.java       --복사
+       DBConnection.java  --복사
+   com.book.controller
+       LoginServlet.java     --servlet   servlet-name:login  / url-pattern:login / doPost()
+       LogoutServlet.java    --servlet   servlet-name:logout / url-pattern:logout / doGet()
+   com.book.dao 
+       LoginDao.java         --interface
+       LoginDaoImpl.java     --class
+   com.book.dto
+       LoginDTO.java         --class        
+             
+WebContent
+    WEB-INF
+        lib
+          mysql-connector-java-8.0.23.jar
+    table_schema             --폴더
+         table.sql           --member , bookshop 테이블작성(복사)
+    index.jsp
+    menu.jsp                 --복사
+
+    login                    --폴더
+       login.jsp             --복사
+       loginOK.jsp
+       fail.jsp   
+========================================================================================================
+<수정하기>
+     src
+       common 
+         DBClose.java       --복사
+         DBConnection.java  --복사
+       com.book.controller
+         LoginServlet.java        --servlet   servlet-name:login       /url-pattern:login      /doPost()체크   
+         LogoutServlet.java       --servlet   servlet-name:logout      /url-pattern:logout     /doGet()체크
+		 BookInsertServlet.java   --servlet   servlet-name:insertBook  /url-pattern:insertBook /doPost()체크
+		 BookListServlet.java     --servlet   servlet-name:listBook    /url-pattern:listBook   /doGet()체크
+		 BookDeleteServlet.java   --servlet   servlet-name:deleteBook  /url-pattern:deleteBook /doPost()체크   
+         BookUpdateServlet.java   --servlet  servlet-name:udateBook    /url-pattern:updateBook /doPost()체크                                                  
+                                                                                                
+	   com.book.dao
+	     LoginDao.java     --interface
+	     LoginDaoImpl.java
+	     BookDao.java
+	     BookDaoImpl.java
+	        
+	   com.book.entity
+	     LoginDTO.java     --class
+	     BookDTO.java                           
+
+     WebContent
+        index.jsp
+        menu.jsp
+        table_schema
+             table.sql   <---member , bookshop 테이블작성
+        
+        login  --폴더
+           login.jsp
+           loginOk.jsp
+           loginFail.jsp
+		book
+		   bookInsert.jsp    --복사
+		   bookList.jsp      --복사
+		   bookUpdate.jsp    --복사    
+========================================
+[작업순서]
+1. 데이터베이스 설계
+2. 화면설계(MVC패턴)
+3. 테이블생성 --> Bean 만들기
+4. 로그인
+5. book추가하기
+6. book전체보기
+7. 삭제하기 or  수정하기	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	   

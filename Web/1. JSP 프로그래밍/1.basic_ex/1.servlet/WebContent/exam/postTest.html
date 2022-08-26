@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>        <!-- 상대경로 -->
+<form action="../post.do" method="post">
+	이름: <input type="text" name="name"><br>
+	점수: <input type="text" name="score"><br>
+	<input type="submit" value="전송">
+	<input type="reset" value="취소">
+</form>
+</body>
+</html>
+<!-- 
+POST방식
+http://localhost:8080/edu/post.do   <-- 데이터가 매핑되지 않는다
+
+http://127.0.0.1:8080/edu 
+					    post.do
+					    get.do
+					    exam
+                           postTest.html
+					       getTest.html
+ -->

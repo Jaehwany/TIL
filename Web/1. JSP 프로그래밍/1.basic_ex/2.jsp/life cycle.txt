@@ -1,0 +1,42 @@
+﻿[life cycle] 
+
+1. application: 서버가 유지되고 있는동안 상태유지(ex. 모든 어플리케이션이 공유할 자원)
+       ★ JSP : Context클래스
+       ★ Servlet : ServletContext클래스
+
+2. session: 세션이 설정되서 세션종료때까지 상태유지(ex. 로그인정보,  장바구니)
+       ★ JSP: session  내장객체 사용
+       ★ Servlet: HttpSession 클래스를 이용 세션객체얻기
+              HttpSession session=request.getSession();
+                               
+3. request: 지정 페이지까지 상태유지(ex. 게시판, 방명록)
+      ★ Servlet 
+        RequestDispatcher rd=request.getRequestDispatcher("상대경로/파일명");
+        request.setAttribute("리케스트명",객체명);
+        rd.forward(request, response);
+
+4. page: 현재페이지에서만 상태유지
+===========================================
+Test.java(서블릿) --> Test.class(컴파일) -->web.xml(명세서등록)
+Test.jsp  ---> Test_jsp.java  ---> Test_jsp.class 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

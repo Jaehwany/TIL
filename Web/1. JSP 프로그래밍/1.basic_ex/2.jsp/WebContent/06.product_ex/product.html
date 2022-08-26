@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+[장바구니]<br>
+Select Item....  <!-- 상대경로:  action="../save"  -->
+<form action="/jsp/save"  method="post">
+	<input type="radio"  name="item"  value="apple">apple<br>
+	<input type="radio"  name="item"  value="strawberry">strawberry<br>
+	<input type="radio"  name="item"  value="graph">graph<br>
+	<input type="submit"  value="Add Cart">
+ 	<input type="button" onclick="location.href='../basket?type=0'" value="Cart List">
+	<input type="button" onclick="location.href='../basket?type=1'" value="Remove Cart">
+</form>
+</body>
+</html>
+<!-- 
+	/jsp
+	   basket
+	   save
+       06.product_ex  <--폴더 
+          product.html
+          
+          
+<a href="../basket?type=0">Cart List</a>
+<a href="../basket?type=1">Remove Cart</a>
+ -->
