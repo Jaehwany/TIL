@@ -7,7 +7,9 @@
 <br>
 
 1. ERC 20
+[ERC 20](https://github.com/Jaehwany/TIL/tree/main/Blockchain/ERC%20표준/token/ERC%2020)
 
 <br>
 
-1. ERC 721 
+2. ERC 721 
+[ERC 721](https://github.com/Jaehwany/TIL/tree/main/Blockchain/ERC%20표준/token/ERC%20721)
