@@ -13,3 +13,8 @@
 |`이론`| :white_check_mark: | ERC 표준 | [ERC 20](https://github.com/Jaehwany/TIL/tree/main/Blockchain/ERC%20표준/token/ERC%2020) |22.08.30 | |
 |`이론`| :white_check_mark: | ERC 표준 | [ERC 721](https://github.com/Jaehwany/TIL/tree/main/Blockchain/ERC%20표준/token/ERC%20721) |22.08.31 | |
 |`이론`| :white_check_mark: | Contract Test | [Truffle](https://github.com/Jaehwany/TIL/tree/main/Blockchain/Contract-Test) |22.09.01 | |
+
+### JPA
+|구분|상태|분야|주제|날짜|비고|
+| ------ | ------ | ------ | ------ | ------ |------ |
+|`이론`| :white_check_mark: | Basic | [Intro](https://github.com/Jaehwany/TIL/blob/main/Blockchain/Basic/0.%20이더리움%20네트워크.md)|22.09.03 | |
