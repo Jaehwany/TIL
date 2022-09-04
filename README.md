@@ -17,4 +17,4 @@
 ### JPA
 |구분|상태|분야|주제|날짜|비고|
 | ------ | ------ | ------ | ------ | ------ |------ |
-|`이론`| :white_check_mark: | Basic | [Intro](https://github.com/Jaehwany/TIL/blob/main/Blockchain/Basic/0.%20이더리움%20네트워크.md)|22.09.03 | |
+|`이론`| :white_check_mark: | Basic | [Intro](https://github.com/Jaehwany/TIL/blob/main/Blockchain/Basic/0.%20이더리움%20네트워크.md)|22.09.03 ~ 09.05 | |
